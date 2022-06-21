@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.javagreenS.dao.ShopDAO">
+	<select id="getHead" resultType="com.spring.javagreenS.vo.ShopVO">
+		select * from goods1;
+	</select>
+	<select id="getProduct2" resultType="com.spring.javagreenS.vo.ShopVO">
+		select * from goods2 where product1 = #{product1};
+	</select>
+	<select id="getProduct3" resultType="com.spring.javagreenS.vo.ShopVO">
+		select * from goods3 where product1 = #{product1} and product2 = #{product2};
+	</select>
+	<select id="productCheck" resultType="com.spring.javagreenS.vo.ShopVO">
+		select * from product where product = #{product};
+	</select>
+	<select id="searchPrd1" resultType="com.spring.javagreenS.vo.ShopVO">
+		select * from goods1 where product1 = #{product1};
+	</select>
+	<select id="searchPrd2" resultType="com.spring.javagreenS.vo.ShopVO">
+		select * from goods2 where product1 = #{product1} and product2 = #{product2};
+	</select>
+	<select id="searchPrd3" resultType="com.spring.javagreenS.vo.ShopVO">
+		select * from goods3 where product1 = #{product1} and product2 = #{product2} and product3 = #{product3};
+	</select>
+	
+	<insert id="setProduct">
+		insert into product values(default,#{vo.product1},#{vo.product2},#{vo.product3},#{vo.product},#{vo.price},#{vo.title},#{vo.content});
+	</insert>
+	<insert id="inputProduct1">
+		insert into goods1 values(#{vo.product1});
+	</insert>
+	<insert id="inputProduct2">
+		insert into goods2 values(#{vo.product1},#{vo.product2});
+	</insert>
+	<insert id="inputProduct3">
+		insert into goods3 values(default,#{vo.product1},#{vo.product2},#{vo.product3});
+	</insert>
+</mapper>
